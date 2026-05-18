@@ -72,7 +72,7 @@ function Navigation() {
                   className="h-10 w-auto rounded-lg object-contain transition-all duration-300 
                            group-hover:scale-105 group-hover:shadow-md"
                 />
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-transparent to-white/20 
+                <div className="absolute inset-0 rounded-lg bg-linear-to-r from-transparent to-white/20 
                               opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <span className="ml-3 text-gray-700 font-medium text-lg hidden sm:block 
@@ -103,7 +103,7 @@ function Navigation() {
                   {/* Animated underline */}
                   <span className={`
                     absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 
-                    bg-gradient-to-r from-gray-400 to-gray-600 rounded-full
+                    bg-linear-to-r from-gray-400 to-gray-600 rounded-full
                     transition-all duration-300 ease-out
                     ${activeItem === item.name ? 'w-6' : 'group-hover:w-4'}
                   `}></span>
@@ -167,7 +167,7 @@ function Navigation() {
                   transition-all duration-300 ease-out
                   transform hover:translate-x-2
                   ${activeItem === item.name
-                    ? 'text-gray-900 bg-gradient-to-r from-gray-100 to-gray-50'
+                    ? 'text-gray-900 bg-linear-to-r from-gray-100 to-gray-50'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }
                 `}
