@@ -273,7 +273,7 @@ function Navigation() {
   const navItems = [
     { name: 'HOME', href: '/' },
     { name: 'ABOUT US', href: '/about' },
-    { name: 'COURSES', href: '/courses' },
+    { name: 'COURSES', href: '/Course' },
     { name: 'ADMISSIONS', href: '/admissions' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'PLACEMENTS', href: '/placements' },
@@ -327,7 +327,7 @@ function Navigation() {
           : 'bg-white top-0 lg:top-9'
         }
       `}>
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 lg:h-24 transition-all duration-300">
             
             
@@ -356,9 +356,9 @@ function Navigation() {
     
     {/* Slogan Divider Row */}
     <div className="flex items-center gap-1.5 mt-1 text-[7px] sm:text-[9px] font-medium tracking-wide text-slate-500 normal-case">
-      <span className="h-[1px] w-3 bg-slate-300"></span>
+      <span className="h-px w-3 bg-slate-300"></span>
       <p className="whitespace-nowrap">Shape Your Future With Us</p>
-      <span className="h-[1px] w-3 bg-slate-300"></span>
+      <span className="h-px w-3 bg-slate-300"></span>
     </div>
   </div>
 </div>
@@ -380,7 +380,7 @@ function Navigation() {
                   {item.name}
                   {/* Clean flat bottom underline matching the reference screenshot */}
                   <span className={`
-                    absolute bottom-[-4px] left-0 right-0 h-[3px] bg-[#0B56A4] transition-all duration-200
+                    absolute -bottom-1 left-0 right-0 h-0.75 bg-[#0B56A4] transition-all duration-200
                     ${activeItem === item.name ? 'opacity-100' : 'opacity-0'}
                   `}></span>
                 </a>

@@ -15,6 +15,7 @@ import im3 from '../../assets/im3.jpeg'
 import im4 from '../../assets/im4.jpeg'
 import im5 from '../../assets/im5.jpeg'
  import im7 from '../../assets/im7.jpeg'
+import PopulerCources from "./PopulerCources";
 
 
 
@@ -44,7 +45,7 @@ function Hero() {
   const timer = setInterval(() => {
     setCurrentSlide((prevSlide) => {
       const next = (prevSlide + 1) % slideImages.length;
-      console.log('Changing to slide:', next); // Debug log
+      // console.log('Changing to slide:', next); // Debug log
       return next;
     });
   }, 15000);
@@ -55,7 +56,7 @@ function Hero() {
     <>
       <section className="relative bg-slate-100 font-roboto overflow-hidden pb-20 lg:pb-16">
         {/* Main Banner Wrapper */}
-        <div className="relative flex flex-col lg:flex-row min-h-[520px] lg:min-h-[580px] bg-[#003B73]">
+        <div className="relative flex flex-col lg:flex-row min-h-130 lg:min-h-145 bg-[#003B73]">
           {/* Left Text content pane */}
           <div className="w-full lg:w-[50%] flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-12 text-white z-10">
             <span className="text-[#F18F1C] font-bold text-xs sm:text-sm tracking-widest uppercase mb-3">
@@ -225,7 +226,8 @@ function Hero() {
           </div>
         </div>
       </section>
-      <div className="h-20 lg:h-24"></div>
+      {/* <div className="h-20 lg:h-24"></div> */}
+      <PopulerCources/>
     </>
   );
 }
