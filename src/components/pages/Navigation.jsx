@@ -263,7 +263,7 @@
 
 import React, { useState, useEffect } from 'react';
 import logo from '../../assets/logo.jpeg';
-
+import { Link } from 'react-router-dom';
 function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -273,7 +273,7 @@ function Navigation() {
   const navItems = [
     { name: 'HOME', href: '/' },
     { name: 'ABOUT US', href: '/about' },
-    { name: 'COURSES', href: '/Course' },
+    { name: 'COURSES', href: '/course' },
     { name: 'ADMISSIONS', href: '/admissions' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'PLACEMENTS', href: '/placements' },
@@ -364,37 +364,41 @@ function Navigation() {
 </div>
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center space-x-1 xl:space-x-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => handleNavClick(item.name)}
-                  className={`
-                    relative px-2.5 xl:px-3.5 py-2 text-[12px] xl:text-[12px] font-bold tracking-wide font-roboto transition-all duration-200
-                    ${activeItem === item.name
-                      ? 'text-[#0B56A4]' // Royal blue hue matching your active item image
-                      : 'text-gray-900 hover:text-[#0B56A4]'
-                    }
-                  `}
-                >
-                  {item.name}
-                  {/* Clean flat bottom underline matching the reference screenshot */}
-                  <span className={`
-                    absolute -bottom-1 left-0 right-0 h-0.75 bg-[#0B56A4] transition-all duration-200
-                    ${activeItem === item.name ? 'opacity-100' : 'opacity-0'}
-                  `}></span>
-                </a>
-              ))}
-            </div>
+  {navItems.map((item) => (
+    <Link
+      key={item.name}
+      to={item.href}
+      onClick={() => handleNavClick(item.name)}
+      className={`
+        relative px-2.5 xl:px-3.5 py-2 text-[12px] xl:text-[12px]
+        font-bold tracking-wide font-roboto transition-all duration-200
+        ${activeItem === item.name
+          ? 'text-[#0B56A4]'
+          : 'text-gray-900 hover:text-[#0B56A4]'
+        }
+      `}
+    >
+      {item.name}
+
+      <span
+        className={`
+          absolute -bottom-1 left-0 right-0 h-0.75 bg-[#0B56A4]
+          transition-all duration-200
+          ${activeItem === item.name ? 'opacity-100' : 'opacity-0'}
+        `}
+      ></span>
+    </Link>
+  ))}
+</div>
 
             {/* Action CTA Button */}
             <div className="hidden lg:block">
-              <a 
-                href="#enquiry" 
+              <button 
+                
                 className="bg-[oklch(35.9%_0.146_265.522)] text-white text-xs xl:text-sm font-bold uppercase tracking-wider py-3 px-6 rounded-lg shadow-sm hover:opacity-90 transition-opacity"
               >
                 Enquiry Now
-              </a>
+              </button>
             </div>
 
             {/* Mobile menu toggle button */}
@@ -423,9 +427,9 @@ function Navigation() {
         `}>
           <div className="px-4 py-4 space-y-1 max-h-[calc(100vh-5rem)] overflow-y-auto">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 onClick={() => handleNavClick(item.name)}
                 className={`
                   block px-4 py-3 rounded-md text-sm font-bold tracking-wider
@@ -436,16 +440,15 @@ function Navigation() {
                 `}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <div className="pt-4 px-4">
-              <a 
-                href="#enquiry" 
+              <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block text-center bg-[oklch(35.9%_0.146_265.522)] text-white text-sm font-bold uppercase tracking-wider py-3 px-6 rounded-lg"
               >
                 Enquiry Now
-              </a>
+              </button>
             </div>
           </div>
         </div>
