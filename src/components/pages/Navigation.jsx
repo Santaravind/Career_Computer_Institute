@@ -370,7 +370,7 @@ function Navigation() {
                   href={item.href}
                   onClick={() => handleNavClick(item.name)}
                   className={`
-                    relative px-2.5 xl:px-3.5 py-2 text-[12px] xl:text-[14px] font-bold tracking-wide font-roboto transition-all duration-200
+                    relative px-2.5 xl:px-3.5 py-2 text-[12px] xl:text-[12px] font-bold tracking-wide font-roboto transition-all duration-200
                     ${activeItem === item.name
                       ? 'text-[#0B56A4]' // Royal blue hue matching your active item image
                       : 'text-gray-900 hover:text-[#0B56A4]'
