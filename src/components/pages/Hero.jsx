@@ -16,6 +16,8 @@ import im4 from '../../assets/im4.jpeg'
 import im5 from '../../assets/im5.jpeg'
  import im7 from '../../assets/im7.jpeg'
 import PopulerCources from "./PopulerCources";
+import About from "./About";
+import Gallery from "./Gallery";
 
 
 
@@ -147,7 +149,8 @@ function Hero() {
         </div>
 
         {/* Floating Bottom Info Deck Card Component */}
-        <div className="absolute left-0 right-0 bottom-[-20px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+        {/* <div className="absolute left-0 right-0 sm:hidden bottom-[-20px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20"> */}
+        <div className="hidden sm:block absolute left-0 right-0 bottom-[-20px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 divide-y md:divide-y-0 lg:divide-x divide-gray-100">
             {/* Item 1 */}
             <div className="flex items-start gap-4 pt-4 md:pt-0">
@@ -228,6 +231,8 @@ function Hero() {
       </section>
       {/* <div className="h-20 lg:h-24"></div> */}
       <PopulerCources/>
+      <Gallery/>
+      <About/>
     </>
   );
 }

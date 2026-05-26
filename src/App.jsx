@@ -1,12 +1,14 @@
 import React from 'react'
 import './App.css'
 import Navigation from './components/pages/Navigation'
-// import Home from './components/pages/Home'
-import About from './components/pages/About'
+
 import { Routes, Route, Link } from "react-router-dom";
 import Header from './components/pages/Header'
 import Hero from './components/pages/Hero'
 import Courses from './components/courses/courses';
+import Footer from './components/pages/Footer';
+import AboutUs from './components/AboutUs';
+import Gallery from './components/pages/Gallery';
 function App() {
   
 
@@ -17,10 +19,12 @@ function App() {
     
      <Routes>
         <Route path="/" element={<Hero/>} />
-        <Route path="/about" element={<About />} />
+        <Route path='/about' element={<AboutUs/>} ></Route>
         <Route path='/course' element={<Courses/>}></Route>
+        <Route path='/gallery' element={<Gallery/>}></Route>
         {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
+      <Footer/>
      
     </>
   )

@@ -1,0 +1,31 @@
+@keyframes scroll-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes scroll-right-to-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left-to-right {
+  animation: scroll-left-to-right 25s linear infinite;
+}
+
+.animate-scroll-right-to-left {
+  animation: scroll-right-to-left 25s linear infinite;
+}
+
+/* Optional: Pause animation on hover */
+.animate-scroll-left-to-right:hover,
+.animate-scroll-right-to-left:hover {
+  animation-play-state: paused;
+}
