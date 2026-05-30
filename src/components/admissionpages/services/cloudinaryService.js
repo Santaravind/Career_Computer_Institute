@@ -1,8 +1,8 @@
 // services/cloudinaryService.js
 export const cloudinaryService = {
   uploadPhoto: async (file) => {
-    // const cloudName = 'du9hkv91l'; // Replace with your Cloudinary cloud name
-    // const uploadPreset = 'BharatCollageAdmissionPhotos'; // Replace with your upload preset
+    const cloudName = 'du9hkv91l'; // Replace with your Cloudinary cloud name
+    const uploadPreset = 'BharatCollageAdmissionPhotos'; // Replace with your upload preset
 
     const formData = new FormData();
     formData.append('file', file);
@@ -10,10 +10,10 @@ export const cloudinaryService = {
     formData.append('cloud_name',cloudName );
 
     try {
-      // const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-      //   method: 'POST',
-      //   body: formData,
-      // });
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: formData,
+      });
 
       if (!response.ok) {
         throw new Error('Upload failed');

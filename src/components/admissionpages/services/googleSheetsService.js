@@ -1,63 +1,7 @@
-// services/googleSheetsService.js
-// const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypvOv874msP3ycKENdCoNLzuZ94fHYyrvZzksPKuxMazNTRuMc73Q6EBDzjMNqnIqP/exec';
 
-//  export  const googleSheetsService = {
-//   // Submit admission data to Google Sheets
-//   submitAdmission: async (formData) => {
-//     try {
-//       console.log('Sending data to Google Sheets...', formData);
-      
-//       const response = await fetch(GOOGLE_SCRIPT_URL, {
-//         method: 'POST',
-//         mode: 'no-cors', // ✅ Add this for CORS
-//         body: JSON.stringify({
-//           action: 'submitAdmission',
-//           data: formData
-//         }),
-//         headers: {
-//           'Content-Type': 'text/plain;charset=utf-8',
-//         },
-//       });
-
-//       // With no-cors mode, we can't read the response
-//       // So we'll assume success and handle errors differently
-//       console.log('Request sent successfully');
-      
-//       return {
-//         status: "success",
-//         message: "Admission submitted successfully",
-//         admissionId: formData.admissionId,
-//         timestamp: new Date().toISOString()
-//       };
-      
-//     } catch (error) {
-//       console.error('Error saving to Google Sheets:', error);
-//       throw new Error('Failed to submit admission form. Please try again.');
-//     }
-//   },
-
-//   // Check if Aadhar already exists
-//   checkAadharExists: async (aadharNumber) => {
-//     try {
-//       // For Aadhar check, we'll use a different approach
-//       // Since we can't read response with no-cors, we'll skip this check
-//       // or implement it differently
-//       console.log('Aadhar check skipped due to CORS limitations');
-//       return false;
-      
-//     } catch (error) {
-//       console.error('Error checking Aadhar:', error);
-//       return false;
-//     }
-//   },
-// };
-
-//This code is working 
-// const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby34M4zPdL0qncjHMdJHK0ytXcFJimlwenorUf-77QLv_CQmP5xPBRhe069zTaRxzBqAQ/exec';
-// const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdqJF32oAtiVOAX_7JQ49n944yd-lsyrVE5nx6_OqT3eKOujrTyPF-CxLQMqI_DUVw9A/exec';
 
 // const SCRIPT_URL='https://script.google.com/macros/s/AKfycbyFFCaOkko2eBsd2l1tvLAR0Qie1ZFKqePJejHdquY0dnJUHLl05tQA6IPTuTDgZCSpSw/exec'
-// Helper function to handle fetch with retry logic
+
 const fetchWithRetry = async (url, options = {}, retries = 3, delay = 2000) => {
   try {
     // REMOVE mode: 'no-cors' - this is crucial!
