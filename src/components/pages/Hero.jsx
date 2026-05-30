@@ -109,7 +109,7 @@ function Hero() {
           </div>
 
           {/* Right Image Slideshow Pane with Masking Curve Effect */}
-          <div className="relative w-full lg:w-[50%] h-[320px] sm:h-[400px] lg:h-auto overflow-hidden">
+          <div className="relative w-full lg:w-[50%] h-80 sm:h-100 lg:h-auto overflow-hidden">
             {/* SVG Left Wave Overlay Mask for Desktop viewports */}
             <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-24 h-full z-10 pointer-events-none">
               <svg
@@ -150,7 +150,7 @@ function Hero() {
 
         {/* Floating Bottom Info Deck Card Component */}
         {/* <div className="absolute left-0 right-0 sm:hidden bottom-[-20px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20"> */}
-        <div className="hidden sm:block absolute left-0 right-0 bottom-[-20px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+        <div className="hidden sm:block absolute left-0 right-0 -bottom-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 divide-y md:divide-y-0 lg:divide-x divide-gray-100">
             {/* Item 1 */}
             <div className="flex items-start gap-4 pt-4 md:pt-0">
