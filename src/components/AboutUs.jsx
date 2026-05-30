@@ -34,7 +34,7 @@ function AboutUs() {
           </div>
 
           {/* Right Side: Modern Styled Image Frame */}
-          <div className="relative w-full h-[350px] sm:h-[420px] lg:h-[480px] rounded-2xl overflow-hidden shadow-xl group">
+          <div className="relative w-full h-87.5 sm:h-105 lg:h-120 rounded-2xl overflow-hidden shadow-xl group">
             {/* Soft Blend Overlay */}
             <div className="absolute inset-0 bg-blue-600/10 mix-blend-multiply z-10 pointer-events-none group-hover:bg-transparent transition-all duration-300"></div>
             <img 

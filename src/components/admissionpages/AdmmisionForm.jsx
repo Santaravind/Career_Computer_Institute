@@ -1,0 +1,466 @@
+import React, { useState, useEffect } from 'react';
+import PersonalDetails from './PersonalDetails';
+import ContactDetails from './ContactDetails';
+import EducationDetails from './EducationDetails';
+import Declaration from './Declaration';
+import SubmissionSuccess from './SubmissionSuccess';
+import { cloudinaryService } from './services/cloudinaryService';
+import { googleSheetsService } from './services/googleSheetsService';
+import AdmissionSuccess from './AdmissionSuccess';
+
+const AdmissionForm = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    // Personal Details
+    title: "",
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    fatherName: "",
+    motherName: "",
+    age: "",
+    castCategory: "",
+    aadharNumber: "",
+
+    // Contact Details
+    mobileNumber: "",
+    email: "",
+    address: "",
+    city: "",
+    villagePost: "",
+    district: "",
+    state: "",
+    pinCode: "",
+    permanentAddress: "",
+    sameAsAddress: false,
+
+    // Educational Details
+    tenth: { collegeName: "", yearOfPassing: "", percentage: "" },
+    twelfth: { collegeName: "", yearOfPassing: "", percentage: "" },
+    diploma: { collegeName: "", yearOfPassing: "", percentage: "" },
+    graduation: { collegeName: "", yearOfPassing: "", percentage: "" },
+    postGraduation: { collegeName: "", yearOfPassing: "", percentage: "" },
+
+    // Course Details
+    courseProgram: "",
+    fillingDate: new Date().toISOString().split("T")[0],
+
+    // Photo Upload
+    photo: null,
+    photoUrl: "",
+
+    // Declaration
+    declarationAccepted: false,
+  });
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [admissionId, setAdmissionId] = useState('');
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
+
+
+
+  //This working 
+useEffect(() => {
+
+  //This is working 18/10/2025
+  const handlePaymentReturn = async () => {
+    console.log('Checking for payment return...');
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentSuccess = urlParams.get('payment_success');
+    
+    if (paymentSuccess) {
+      // Clear URL parameters
+      window.history.replaceState({}, '', window.location.pathname);
+      
+      // Move to success page - user will enter admission ID manually
+      setStep(5);
+      setSubmissionSuccess(true);
+    }
+    
+    // Handle direct access with existing admission ID
+    const pendingAdmissionId = localStorage.getItem('pendingAdmissionId');
+    if (pendingAdmissionId && !paymentSuccess) {
+      setAdmissionId(pendingAdmissionId);
+      setStep(5);
+    }
+  };
+
+  handlePaymentReturn();
+}, []);
+
+//This update for AdmissionSuccess want to remove success page to redirection
+// useEffect(() => {
+  
+//   const handlePaymentReturn = async () => {
+//     // console.log('Checking for payment return...');
+    
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const paymentSuccess = urlParams.get('payment_success');
+    
+//     if (paymentSuccess) {
+//       // Clear URL parameters
+//       window.history.replaceState({}, '', window.location.pathname);
+      
+//       // Move to success page
+//       setStep(5); // This will show AdmissionSuccess component
+//     }
+    
+//     // Handle direct access with existing admission ID
+//     const pendingAdmissionId = localStorage.getItem('pendingAdmissionId');
+//     if (pendingAdmissionId && !paymentSuccess) {
+//       setAdmissionId(pendingAdmissionId);
+//       setStep(5); // This will show AdmissionSuccess component
+//     }
+//   };
+
+//   handlePaymentReturn();
+// }, []);
+
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked, files } = e.target;
+    
+    if (name === 'photo' && files && files[0]) {
+      handlePhotoUpload(files[0]);
+      return;
+    }
+    
+    if (name === 'dateOfBirth') {
+      const age = calculateAge(value);
+      setFormData(prev => ({
+        ...prev,
+        dateOfBirth: value,
+        age: age
+      }));
+    } else if (name === 'sameAsAddress') {
+      setFormData(prev => ({
+        ...prev,
+        sameAsAddress: checked,
+        permanentAddress: checked ? prev.address : ''
+      }));
+    } else if (name.includes('.')) {
+      const [section, field] = name.split('.');
+      setFormData(prev => ({
+        ...prev,
+        [section]: {
+          ...prev[section],
+          [field]: value
+        }
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    }
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const handlePhotoUpload = async (file) => {
+    // Validate file size (500KB)
+    if (file.size > 500 * 1024) {
+      setErrors(prev => ({ ...prev, photo: 'Photo size must be less than 500KB' }));
+      return;
+    }
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      setErrors(prev => ({ ...prev, photo: 'Please upload a valid image file' }));
+      return;
+    }
+
+    setUploadingPhoto(true);
+    try {
+      const photoUrl = await cloudinaryService.uploadPhoto(file);
+      setFormData(prev => ({
+        ...prev,
+        photo: file,
+        photoUrl: photoUrl
+      }));
+      setErrors(prev => ({ ...prev, photo: '' }));
+    } catch (error) {
+      setErrors(prev => ({ ...prev, photo: 'Failed to upload photo. Please try again.' }));
+    } finally {
+      setUploadingPhoto(false);
+    }
+  };
+
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age.toString();
+  };
+
+  const validateStep = (step) => {
+    const newErrors = {};
+
+    if (step === 1) {
+      if (!formData.firstName) newErrors.firstName = 'First name is required';
+     // if (!formData.lastName) newErrors.lastName = 'Last name is required';
+      if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of birth is required';
+      if (!formData.fatherName) newErrors.fatherName = "Father's name is required";
+      if (!formData.motherName) newErrors.motherName = "Mother's name is required";
+      if (!formData.castCategory) newErrors.castCategory = 'Cast category is required';
+      if (!formData.aadharNumber) {
+        newErrors.aadharNumber = 'Aadhar number is required';
+      } else if (formData.aadharNumber.length !== 12) {
+        newErrors.aadharNumber = 'Aadhar number must be 12 digits';
+      }
+      if (!formData.photoUrl) newErrors.photo = 'Photo is required';
+    }
+
+    if (step === 2) {
+      if (!formData.mobileNumber) newErrors.mobileNumber = 'Mobile number is required';
+      if (!formData.email) newErrors.email = 'Email is required';
+      if (!formData.address) newErrors.address = 'Address is required';
+      if (!formData.city) newErrors.city = 'City is required';
+      if (!formData.villagePost) newErrors.villagePost = 'Village/Post is required';
+      if (!formData.district) newErrors.district = 'District is required';
+      if (!formData.state) newErrors.state = 'State is required';
+      if (!formData.pinCode) newErrors.pinCode = 'PIN code is required';
+      if (!formData.permanentAddress) newErrors.permanentAddress = 'Permanent address is required';
+    }
+
+    if (step === 3) {
+      if (!formData.tenth.collegeName || !formData.tenth.yearOfPassing || !formData.tenth.percentage) {
+        newErrors.tenth = '10th details are required';
+      }
+      if (!formData.courseProgram) newErrors.courseProgram = 'Course/Program is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const nextStep = async () => {
+    if (validateStep(step)) {
+      setStep(step + 1);
+    }
+  };
+
+  const prevStep = () => {
+    setStep(step - 1);
+  };
+
+
+
+// client data not show 18/10/2025 This working full 
+const handleSubmit = async (e, submissionData = null) => {
+  // if (e) e.preventDefault();
+  if (!validateStep(4)) return;
+  setIsSubmitting(true);
+  try {
+    // Use provided submissionData or create default
+    const finalSubmissionData = submissionData || {
+      ...formData,
+      admissionId: `ADM${formData.aadharNumber.slice(-8)}${Date.now().toString().slice(-4)}`,
+      submissionTimestamp: new Date().toISOString(),
+      status: 'ADMISSION_CONFIRMED',
+      paymentStatus: 'paid'
+    };
+    // Submit to Google Sheets
+    const response = await googleSheetsService.submitAdmission(finalSubmissionData);
+    
+    console.log('Form submitted successfully to Google Sheets:', response);
+    
+    // Only move to success page if not redirecting to payment
+    if (finalSubmissionData.paymentStatus !== 'pending') {
+      setAdmissionId(finalSubmissionData.admissionId);
+      setStep(5);
+    }
+    
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    setErrors({ submit: error.message || 'Failed to submit form. Please try again.' });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+// const handleSubmit = async (e, submissionData = null) => {
+//   //This is updated code for admission Success pages
+//   if (!validateStep(4)) return;
+//   setIsSubmitting(true);
+//     try {
+//     const finalSubmissionData = submissionData || {
+//       ...formData,
+//       admissionId: `ADM${formData.aadharNumber.slice(-8)}${Date.now().toString().slice(-4)}`,
+//       submissionTimestamp: new Date().toISOString(),
+//       status: 'ADMISSION_CONFIRMED',
+//       paymentStatus: 'paid'
+//     };
+//     const response = await googleSheetsService.submitAdmission(finalSubmissionData);
+//      console.log('Form submitted successfully to Google Sheets:', response);
+    
+//     // Set admission ID and move to success page
+//     setAdmissionId(finalSubmissionData.admissionId);
+//     setStep(5); // This will show AdmissionSuccess component
+    
+//   } catch (error) {
+//     console.error('Error submitting form:', error);
+//     setErrors({ submit: error.message || 'Failed to submit form. Please try again.' });
+//   } finally {
+//     setIsSubmitting(false);
+//   }
+// };
+
+
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <PersonalDetails 
+            formData={formData} 
+            errors={errors} 
+            onChange={handleInputChange}
+            uploadingPhoto={uploadingPhoto}
+          />
+        );
+      case 2:
+        return (
+          <ContactDetails 
+            formData={formData} 
+            errors={errors} 
+            onChange={handleInputChange} 
+          />
+        );
+      case 3:
+        return (
+          <EducationDetails 
+            formData={formData} 
+            errors={errors} 
+            onChange={handleInputChange} 
+          />
+        );
+      case 4:
+        return (
+          <Declaration
+              formData={formData}
+              errors={errors}
+               onChange={handleInputChange}
+               onSubmit={handleSubmit}
+                isSubmitting={isSubmitting}
+                  admissionId={admissionId}
+                setIsSubmitting={setIsSubmitting} // Add this
+                setErrors={setErrors} // Add this
+/>
+        );
+      // case 5:
+      //   return (
+      //     <SubmissionSuccess 
+      //       formData={formData} 
+      //       admissionId={admissionId} 
+      //     />
+      //   );
+
+      case 5:
+        return (
+              <AdmissionSuccess 
+                formData={formData} 
+                 admissionId={admissionId} 
+                />
+              );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-10">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Header */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h1 className="text-3xl font-bold text-gray-800 text-center mb-2">
+           Career computer Institute Admission Form
+          </h1>
+          <p className="text-red-400 text-center font-semibold text-sm">
+            ⚠️ Important: All details must exactly match your 10th class certificate and Aadhar card. 
+            Any mismatch will lead to admission cancellation.
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-between mb-4 gap-2 sm:gap-4">
+            {[1, 2, 3, 4, 5].map((stepNumber) => (
+              <div key={stepNumber} className="flex items-center">
+                <div
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-semibold ${
+                    step >= stepNumber
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-300 text-gray-600'
+                  }`}
+                >
+                  {stepNumber}
+                </div>
+                {stepNumber < 5 && (
+                  <div
+                    className={`hidden sm:block w-16 h-1 ${
+                      step > stepNumber ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center sm:justify-between text-xs sm:text-sm text-gray-600 gap-2 sm:gap-0">
+            <span>Personal</span>
+            <span>Contact</span>
+            <span>Education</span>
+            <span>Declaration</span>
+            <span>Complete</span>
+          </div>
+        </div>
+
+        {/* Form Content */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          {renderStep()}
+
+          {/* Navigation Buttons */}
+          {step < 4 && (
+            <div className="flex justify-between mt-6">
+              <button
+                type="button"
+                onClick={prevStep}
+                disabled={step === 1}
+                className={`px-6 py-2 rounded-md ${
+                  step === 1
+                    ? 'bg-gray-300 cursor-not-allowed'
+                    : 'bg-gray-600 text-white hover:bg-gray-700'
+                }`}
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                onClick={nextStep}
+                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdmissionForm;

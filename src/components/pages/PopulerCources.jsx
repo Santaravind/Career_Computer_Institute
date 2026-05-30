@@ -51,6 +51,24 @@ function PopulerCources() {
       borderColor: 'border-l-[#8E24AA]', // Purple
       icon: < IoMegaphoneOutline  className="text-4xl text-[#8E24AA] -rotate-12" />,
       isCustomIcon: false
+    },
+     {
+      id: 5,
+      title: 'O. LEVEL ',
+      duration: '',
+      description: '',
+      borderColor: 'border-l-[#8E24AA]', // Purple
+      icon: < IoMegaphoneOutline  className="text-4xl text-[#8E24AA] -rotate-12" />,
+      isCustomIcon: false
+    },
+     {
+      id: 6,
+      title: 'A.D.C.A',
+      duration: '12 Months',
+      description: '',
+      borderColor: 'border-l-[#8E24AA]', // Purple
+      icon: < IoMegaphoneOutline  className="text-4xl text-[#8E24AA] -rotate-12" />,
+      isCustomIcon: false
     }
   ];
    const navigate = useNavigate(); 
@@ -60,77 +78,149 @@ function PopulerCources() {
 
   }
   return (
-    <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 font-roboto">
-      <div className="max-w-350 mx-auto">
+    // <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 font-roboto">
+    //   <div className="max-w-350 mx-auto">
         
-        {/* Header Area */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
-          <div>
-            <span className="text-[#F18F1C] font-bold text-xs uppercase tracking-wider block mb-1">
-              OUR COURSES
-            </span>
-            <div className="relative inline-block">
-              <h2 className="text-[#002B49] text-2xl sm:text-3xl font-extrabold tracking-tight pb-3">
-                Popular Courses
-              </h2>
-              {/* Bottom blue accent bar matching the visual reference */}
-              <span className="absolute bottom-0 left-0 w-10 h-0.75 bg-[#0B56A4]"></span>
-            </div>
-          </div>
+    //     {/* Header Area */}
+    //     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
+    //       <div>
+    //         <span className="text-[#F18F1C] font-bold text-xs uppercase tracking-wider block mb-1">
+    //           OUR COURSES
+    //         </span>
+    //         <div className="relative inline-block">
+    //           <h2 className="text-[#002B49] text-2xl sm:text-3xl font-extrabold tracking-tight pb-3">
+    //             Popular Courses
+    //           </h2>
+    //           {/* Bottom blue accent bar matching the visual reference */}
+    //           <span className="absolute bottom-0 left-0 w-10 h-0.75 bg-[#0B56A4]"></span>
+    //         </div>
+    //       </div>
           
-          <button  onClick={handalCourse} className="border border-[#002B49] text-[#002B49] hover:bg-[#002B49] hover:text-white text-xs sm:text-sm font-bold tracking-wide uppercase py-2.5 px-5 rounded transition-colors self-stretch sm:self-auto text-center">
-            View All Courses
-          </button>
-        </div>
+    //       <button  onClick={handalCourse} className="border border-[#002B49] text-[#002B49] hover:bg-[#002B49] hover:text-white text-xs sm:text-sm font-bold tracking-wide uppercase py-2.5 px-5 rounded transition-colors self-stretch sm:self-auto text-center">
+    //         View All Courses
+    //       </button>
+    //     </div>
 
-        {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {courses.map((course) => (
-            <div
-              key={course.id}
-              className={`bg-white rounded-r-xl border-y border-r border-gray-100 border-l-[5px] ${course.borderColor} shadow-xs hover:shadow-md transition-shadow duration-300 p-6 flex items-start gap-4`}
-            >
+    //     {/* Responsive Grid Layout */}
+    //     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+    //       {courses.map((course) => (
+    //         <div
+    //           key={course.id}
+    //           className={`bg-white rounded-r-xl border-y border-r border-gray-100 border-l-[5px] ${course.borderColor} shadow-xs hover:shadow-md transition-shadow duration-300 p-6 flex items-start gap-4`}
+    //         >
               
-              {/* Icon / Brand Graphic Box */}
-              <div className="shrink-0 flex flex-col items-center justify-center min-w-16">
-                {course.icon}
-                {course.isCustomIcon && (
-                  <span className="text-[10px] font-bold text-[#004B75] mt-1 tracking-tight">
-                    {course.subText}
-                  </span>
-                )}
-              </div>
+    //           {/* Icon / Brand Graphic Box */}
+    //           <div className="shrink-0 flex flex-col items-center justify-center min-w-16">
+    //             {course.icon}
+    //             {course.isCustomIcon && (
+    //               <span className="text-[10px] font-bold text-[#004B75] mt-1 tracking-tight">
+    //                 {course.subText}
+    //               </span>
+    //             )}
+    //           </div>
 
-              {/* Text Information Elements */}
-              <div className="flex flex-col h-full">
-                <h3 className="text-[#002B49] text-lg font-extrabold leading-snug">
-                  {course.title}
-                </h3>
+    //           {/* Text Information Elements */}
+    //           <div className="flex flex-col h-full">
+    //             <h3 className="text-[#002B49] text-lg font-extrabold leading-snug">
+    //               {course.title}
+    //             </h3>
                 
-                <p className="text-gray-500 font-bold text-xs mt-0.5 mb-2">
-                  Duration: <span className="font-semibold">{course.duration}</span>
-                </p>
+    //             <p className="text-gray-500 font-bold text-xs mt-0.5 mb-2">
+    //               Duration: <span className="font-semibold">{course.duration}</span>
+    //             </p>
                 
-                <p className="text-gray-600 text-[13px] leading-relaxed font-medium mb-4 grow">
-                  {course.description}
-                </p>
+    //             <p className="text-gray-600 text-[13px] leading-relaxed font-medium mb-4 grow">
+    //               {course.description}
+    //             </p>
 
-                {/* Link Trigger */}
-                <a
-                  href={`#course-${course.id}`}
-                  className="inline-flex items-center gap-1.5 text-[#0B56A4] hover:text-blue-800 text-sm font-extrabold group transition-colors mt-auto"
-                >
-                  Learn More
-                  <FiArrowRight className="text-base transform group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
+    //             {/* Link Trigger */}
+    //             <a
+    //               href={`#course-${course.id}`}
+    //               className="inline-flex items-center gap-1.5 text-[#0B56A4] hover:text-blue-800 text-sm font-extrabold group transition-colors mt-auto"
+    //             >
+    //               Learn More
+    //               <FiArrowRight className="text-base transform group-hover:translate-x-1 transition-transform" />
+    //             </a>
+    //           </div>
 
-            </div>
-          ))}
+    //         </div>
+    //       ))}
+    //     </div>
+
+    //   </div>
+    // </section>
+    <section className=" py-14 px-4 mt-4 sm:px-6 lg:px-8 font-roboto">
+  {/* Changed max-w-350 to max-w-6xl to properly accommodate 3 columns */}
+  <div className="max-w-6xl mx-auto">
+    
+    {/* Header Area */}
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
+      <div>
+        <span className="text-[#F18F1C] font-bold text-xs uppercase tracking-wider block mb-1">
+          OUR COURSES
+        </span>
+        <div className="relative inline-block">
+          <h2 className="text-[#002B49] text-2xl sm:text-3xl font-extrabold tracking-tight pb-3">
+            Popular Courses
+          </h2>
+          {/* Bottom blue accent bar */}
+          <span className="absolute bottom-0 left-0 w-10 h-0.75 bg-[#0B56A4]"></span>
         </div>
-
       </div>
-    </section>
+      
+      <button onClick={handalCourse} className="border border-[#002B49] text-[#002B49] hover:bg-[#002B49] hover:text-white text-xs sm:text-sm font-bold tracking-wide uppercase py-2.5 px-5 rounded transition-colors self-stretch sm:self-auto text-center">
+        View All Courses
+      </button>
+    </div>
+
+    {/* Responsive Grid Layout: Configured for 3 columns on large screens */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {courses.map((course) => (
+        <div
+          key={course.id}
+          className={`bg-white rounded-r-xl border-y border-r border-gray-100 border-l-[5px] ${course.borderColor} shadow-xs hover:shadow-md transition-shadow duration-300 p-6 flex items-start gap-4`}
+        >
+          
+          {/* Icon / Brand Graphic Box */}
+          <div className="shrink-0 flex flex-col items-center justify-center min-w-16">
+            {course.icon}
+            {course.isCustomIcon && (
+              <span className="text-[10px] font-bold text-[#004B75] mt-1 tracking-tight">
+                {course.subText}
+              </span>
+            )}
+          </div>
+
+          {/* Text Information Elements */}
+          <div className="flex flex-col h-full w-full">
+            <h3 className="text-[#002B49] text-lg font-extrabold leading-snug">
+              {course.title}
+            </h3>
+            
+            <p className="text-gray-500 font-bold text-xs mt-0.5 mb-2">
+              Duration: <span className="font-semibold">{course.duration}</span>
+            </p>
+            
+            <p className="text-gray-600 text-[13px] leading-relaxed font-medium mb-4 grow">
+              {course.description}
+            </p>
+
+            {/* Link Trigger */}
+            <a
+              href={`#course-${course.id}`}
+              className="inline-flex items-center gap-1.5 text-[#0B56A4] hover:text-blue-800 text-sm font-extrabold group transition-colors mt-auto"
+            >
+              Learn More
+              <FiArrowRight className="text-base transform group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
   );
 }
 

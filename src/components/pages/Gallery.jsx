@@ -19,12 +19,12 @@ function Gallery() {
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 tracking-tight">
             Our
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               {" "}Gallery
             </span>
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
-          <p className="text-gray-300 mt-4 max-w-md mx-auto">
+          <div className="w-24 h-1 bg-linear-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
+          <p className="text-gray-900 mt-4 max-w-md mx-auto">
             Explore our collection of beautiful moments
           </p>
         </div>
@@ -35,14 +35,14 @@ function Gallery() {
             {scrollingImages.map((image, index) => (
               <div
                 key={index}
-                className="group relative flex-shrink-0 w-72 md:w-80 h-48 md:h-56 rounded-xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105"
+                className="group relative shrink-0 w-72 md:w-80 h-48 md:h-56 rounded-xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105"
               >
                 <img
                   src={image}
                   alt={`Gallery item ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))}
           </div>
@@ -54,14 +54,14 @@ function Gallery() {
             {[...scrollingImages].reverse().map((image, index) => (
               <div
                 key={`reverse-${index}`}
-                className="group relative flex-shrink-0 w-72 md:w-80 h-48 md:h-56 rounded-xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105"
+                className="group relative shrink-0 w-72 md:w-80 h-48 md:h-56 rounded-xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105"
               >
                 <img
                   src={image}
                   alt={`Gallery item reverse ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))}
           </div>

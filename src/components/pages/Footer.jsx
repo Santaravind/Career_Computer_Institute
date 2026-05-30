@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 // Reusable component for the navigation column links
 const FooterColumn = ({ title, links }) => (
   <div className="flex flex-col space-y-2 text-sm text-gray-600">
@@ -13,6 +13,14 @@ const FooterColumn = ({ title, links }) => (
 );
 
 function Footer() {
+const onHanalHappay=(e)=>{
+ 
+      e.preventDefault();
+       window.open('https://www.happydigitalbharat.com/', '_blank');
+    }
+
+
+
   // Navigation links data mapping the image layout
   const sections = [
     { title: 'Solutions', links: ['Virtual Office', 'Flex Office', 'Fixed Office'] },
@@ -67,7 +75,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-500">
         {/* Copyright */}
         <div className="order-3 md:order-1">
-          &copy; 2026 - Happy Digital Bharat
+          &copy; 2026 -Career Computer Institute/S designed by <button onClick={onHanalHappay} className='hover:text-blue-400 hover:text-[18px]'> Happy Digital Bharat   </button> 
         </div>
 
         {/* Social Media Icons (Centered on all breakpoints) */}
