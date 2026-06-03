@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiArrowRight, FiDownload } from "react-icons/fi";
 import { SlBadge } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 import {
   PiMonitorLight,
   PiStudentLight,
@@ -9,51 +10,54 @@ import {
 import { FaGraduationCap, FaDesktop, FaUserTie } from "react-icons/fa6";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
-import im1 from '../../assets/im1.jpeg'
-import im2 from '../../assets/im2.jpeg'
-import im3 from '../../assets/im3.jpeg'
-import im4 from '../../assets/im4.jpeg'
-import im5 from '../../assets/im5.jpeg'
- import im7 from '../../assets/im7.jpeg'
+import im1 from "../../assets/im1.jpeg";
+import im2 from "../../assets/im2.jpeg";
+import im3 from "../../assets/im3.jpeg";
+import im4 from "../../assets/im4.jpeg";
+import im5 from "../../assets/im5.jpeg";
+import im7 from "../../assets/im7.jpeg";
 import PopulerCources from "./PopulerCources";
 import About from "./About";
 import Gallery from "./Gallery";
-
-
 
 function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Array of placeholder stock images for the computer institute setting
   const slideImages = [
-          im1,
-          im2,
-          im7,
-          im3,
-          im4,
-          im5,
-          // im6
+    im1,
+    im2,
+    im7,
+    im3,
+    im4,
+    im5,
+    // im6
   ];
 
   // Auto-scrolling logic every 15 seconds
   // useEffect(() => {
   //   const timer = setInterval(() => {
   //     setCurrentSlide((prevSlide) => (prevSlide + 1) % slideImages.length);
-  //   }, 3000); 
+  //   }, 3000);
 
   //   return () => clearInterval(timer);
   // }, [slideImages.length]);
   useEffect(() => {
-  const timer = setInterval(() => {
-    setCurrentSlide((prevSlide) => {
-      const next = (prevSlide + 1) % slideImages.length;
-      // console.log('Changing to slide:', next); // Debug log
-      return next;
-    });
-  }, 15000);
-  return () => clearInterval(timer);
-}, [slideImages.length]);
+    const timer = setInterval(() => {
+      setCurrentSlide((prevSlide) => {
+        const next = (prevSlide + 1) % slideImages.length;
+        // console.log('Changing to slide:', next); // Debug log
+        return next;
+      });
+    }, 15000);
+    return () => clearInterval(timer);
+  }, [slideImages.length]);
 
+  const navigate = useNavigate();
+  const handladmission = (e) => {
+    e.preventDefault();
+    navigate("/admissions");
+  };
   return (
     <>
       <section className="relative bg-slate-100 font-roboto overflow-hidden pb-20 lg:pb-16">
@@ -150,8 +154,8 @@ function Hero() {
 
         {/* Floating Bottom Info Deck Card Component */}
         {/* <div className="absolute left-0 right-0 sm:hidden bottom-[-20px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20"> */}
-        <div className="hidden sm:block absolute left-0 right-0 -bottom-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 divide-y md:divide-y-0 lg:divide-x divide-gray-100">
+        <div className="hidden sm:block absolute left-0 right-0 -bottom-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 divide-y md:divide-y-0 lg:divide-y-0 lg:divide-x divide-gray-100">
             {/* Item 1 */}
             <div className="flex items-start gap-4 pt-4 md:pt-0">
               <div className="p-3.5 bg-blue-50 text-[#003B73] rounded-full shrink-0">
@@ -229,10 +233,28 @@ function Hero() {
           </div>
         </div>
       </section>
-      {/* <div className="h-20 lg:h-24"></div> */}
-      <PopulerCources/>
-      <Gallery/>
-      <About/>
+      <div className=" bg-[#003B73] font-semibold text-white flex items-center overflow-hidden header-notice text-2xl mt-1">
+        <span className="bg-[oklch(45.5%_0.188_13.697)] text-white px-3 py-2 mr-2 text-2xl header-notice-label">
+          NOTICE
+        </span>
+        <div className="overflow-hidden relative w-full">
+          <div className="animate-marquee whitespace-nowrap py-2">
+            Welcome to Career computer Institute
+            <span
+              className="text-yellow-400 ml-2 cursor-pointer "
+              onClick={handladmission}
+            >
+              • Admissions Open{" "}
+            </span>
+            • Explore Our Courses
+          </div>
+        </div>
+      </div>
+      {/* <div className="h-4 lg:h-10"></div> */}
+      <br />
+      <PopulerCources />
+      <Gallery />
+      <About />
     </>
   );
 }

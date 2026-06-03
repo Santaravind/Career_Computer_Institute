@@ -343,7 +343,7 @@ function Navigation() {
   </div>
   
   {/* Typography Suite */}
-  <div className="flex flex-col justify-center uppercase leading-none">
+  <div className="flex flex-col justify-center uppercase leading-none ">
     {/* CAREER */}
     <h1 className="text-[#0B56A4] text-2xl sm:text-3xl tracking-wider text-center font-bold ">
       Career
@@ -363,7 +363,7 @@ function Navigation() {
   </div>
 </div>
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-1 xl:space-x-4">
+            <div className="hidden lg:flex items-center space-x-1 xl:space-x-4 ">
   {navItems.map((item) => (
     <Link
       key={item.name}
@@ -397,7 +397,7 @@ function Navigation() {
                 
                 className="bg-[oklch(35.9%_0.146_265.522)] text-white text-xs xl:text-sm font-bold uppercase tracking-wider py-3 px-6 rounded-lg shadow-sm hover:opacity-90 transition-opacity"
               >
-                Enquiry Now
+                login
               </button>
             </div>
 
