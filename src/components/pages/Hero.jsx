@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiArrowRight, FiDownload } from "react-icons/fi";
 import { SlBadge } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 import {
   PiMonitorLight,
   PiStudentLight,
@@ -52,6 +53,11 @@ function Hero() {
     return () => clearInterval(timer);
   }, [slideImages.length]);
 
+  const navigate = useNavigate();
+  const handladmission = (e) => {
+    e.preventDefault();
+    navigate("/admissions");
+  };
   return (
     <>
       <section className="relative bg-slate-100 font-roboto overflow-hidden pb-20 lg:pb-16">
@@ -227,6 +233,23 @@ function Hero() {
           </div>
         </div>
       </section>
+      <div className=" bg-[#003B73] font-semibold text-white flex items-center overflow-hidden header-notice text-2xl mt-1">
+        <span className="bg-[oklch(45.5%_0.188_13.697)] text-white px-3 py-2 mr-2 text-2xl header-notice-label">
+          NOTICE
+        </span>
+        <div className="overflow-hidden relative w-full">
+          <div className="animate-marquee whitespace-nowrap py-2">
+            Welcome to Career computer Institute
+            <span
+              className="text-yellow-400 ml-2 cursor-pointer "
+              onClick={handladmission}
+            >
+              • Admissions Open{" "}
+            </span>
+            • Explore Our Courses
+          </div>
+        </div>
+      </div>
       {/* <div className="h-4 lg:h-10"></div> */}
       <br />
       <PopulerCources />

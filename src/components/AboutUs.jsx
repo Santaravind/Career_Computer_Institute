@@ -4,7 +4,11 @@ import m1 from '../assets/im7.jpeg'
 function AboutUs() {
   return (
     <div className="w-full bg-white font-sans text-gray-700 selection:bg-blue-100 selection:text-blue-800">
-      
+       <h1 className="items-center justify-center text-4xl font-extrabold mb-8 mt-4  text-center text-[#0B56A4]">
+        About Us
+      </h1>
+      <div className="w-30 h-1 bg-linear-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
+
       {/* SECTION 1: Who We Are & Hero Presentation */}
       <section className="py-16 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

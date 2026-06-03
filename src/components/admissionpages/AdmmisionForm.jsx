@@ -383,11 +383,11 @@ const handleSubmit = async (e, submissionData = null) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10">
+    <div className="min-h-screen bg-yellow-50 py-10">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h1 className="text-3xl font-bold text-gray-800 text-center mb-2">
+          <h1 className="text-3xl font-bold  text-[#0B56A4] text-center mb-2 ">
            Career computer Institute Admission Form
           </h1>
           <p className="text-red-400 text-center font-semibold text-sm">

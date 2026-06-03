@@ -1,8 +1,8 @@
 // services/cloudinaryService.js
 export const cloudinaryService = {
   uploadPhoto: async (file) => {
-    const cloudName = 'du9hkv91l'; // Replace with your Cloudinary cloud name
-    const uploadPreset = 'BharatCollageAdmissionPhotos'; // Replace with your upload preset
+    const cloudName = 'djwanfb4j'; // Replace with your Cloudinary cloud name
+    const uploadPreset = 'Career_Computer'; // Replace with your upload preset
 
     const formData = new FormData();
     formData.append('file', file);
