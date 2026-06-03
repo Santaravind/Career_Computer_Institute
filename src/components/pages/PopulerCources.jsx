@@ -149,7 +149,7 @@ function PopulerCources() {
 
     //   </div>
     // </section>
-    <section className=" py-14 px-4 mt-4 sm:px-6 lg:px-8 font-roboto">
+    <section className=" py-8 px-4 mt-4 sm:px-6 lg:px-8 font-roboto">
   {/* Changed max-w-350 to max-w-6xl to properly accommodate 3 columns */}
   <div className="max-w-6xl mx-auto">
     
@@ -163,7 +163,7 @@ function PopulerCources() {
           <h2 className="text-[#002B49] text-2xl sm:text-3xl font-extrabold tracking-tight pb-3">
             Popular Courses
           </h2>
-          {/* Bottom blue accent bar */}
+          
           <span className="absolute bottom-0 left-0 w-10 h-0.75 bg-[#0B56A4]"></span>
         </div>
       </div>

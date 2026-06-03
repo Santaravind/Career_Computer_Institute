@@ -1,3 +1,6 @@
+/* body{
+  background: #d3ccda;
+} */
 @keyframes scroll-left-to-right {
   0% {
     transform: translateX(-50%);

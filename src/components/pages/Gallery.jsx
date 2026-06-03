@@ -1,13 +1,13 @@
-import React from 'react';
-import im1 from '../../assets/im1.jpeg'
-import im2 from '../../assets/im2.jpeg';
-import im3 from '../../assets/im3.jpeg';
-import im4 from '../../assets/im4.jpeg';
-import im5 from '../../assets/im5.jpeg';
-import im7 from '../../assets/im7.jpeg';
+import React from "react";
+import im1 from "../../assets/im1.jpeg";
+import im2 from "../../assets/im2.jpeg";
+import im3 from "../../assets/im3.jpeg";
+import im4 from "../../assets/im4.jpeg";
+import im5 from "../../assets/im5.jpeg";
+import im7 from "../../assets/im7.jpeg";
 
 function Gallery() {
-  const images = [im1,im2,im3,im4,im5,im7];
+  const images = [im1, im2, im3, im4, im5, im7];
 
   // Duplicate images to create a seamless loop effect
   const scrollingImages = [...images, ...images];
@@ -15,12 +15,13 @@ function Gallery() {
   return (
     <div className="min-h-screen bg-white/60">
       {/* Hero Section */}
-      <div className="relative overflow-hidden py-16">
-        <div className="text-center mb-12">
+      <div className="relative overflow-hidden py-4">
+        <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 tracking-tight">
             Our
             <span className="bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {" "}Gallery
+              {" "}
+              Gallery
             </span>
           </h1>
           <div className="w-24 h-1 bg-linear-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
