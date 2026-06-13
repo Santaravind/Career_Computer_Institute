@@ -165,7 +165,7 @@ const PersonalDetails = ({ formData, errors, onChange, uploadingPhoto }) => {
     Passport Size Photo * (Max 500KB)
   </label>
   <div className="flex items-center space-x-4">
-    <div className="flex-shrink-0">
+    <div className="shrink-0">
       {formData.photoUrl ? (
         <img 
           src={formData.photoUrl} 
@@ -222,6 +222,29 @@ const PersonalDetails = ({ formData, errors, onChange, uploadingPhoto }) => {
           )}
           <p className="text-sm text-rose-600 mt-1">
             Must match with your Aadhar card. Any mismatch will lead to admission cancellation.
+          </p>
+        </div>
+        {/* //apparNumber */}
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Appar Number *
+          </label>
+          <input
+            type="text"
+            name="apparNumber"
+            value={formData.apparNumber}
+            onChange={onChange}
+            maxLength="12"
+            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              errors.aNumber ? 'border-red-500' : 'border-gray-300'
+            }`}
+            placeholder="12-digit Appar number"
+          />
+          {errors.apparNumber && (
+            <p className="text-red-500 text-sm mt-1">{errors.aadharNumber}</p>
+          )}
+          <p className="text-sm text-rose-600 mt-1">
+            Must match with your appar ID card. Any mismatch will lead to admission cancellation.
           </p>
         </div>
       </div>

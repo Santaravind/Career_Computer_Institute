@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 
 const EducationDetails = ({ formData, errors, onChange }) => {
-  const computerCourses = [
+  const courseOptions = [
   { value: "Tally", label: "Tally" },
   { value: "DIPLOMA IN FINANICAL ACCOUNT (D.F.A)", label: "DIPLOMA IN FINANICAL ACCOUNT (D.F.A)" },
   { value: "CERTIFICATE IN COMPUTER OPERATOR & OFFICE ASSISTANT(C.C.O.O.A)", label: "CERTIFICATE IN COMPUTER OPERATOR & OFFICE ASSISTANT(C.C.O.O.A)" },

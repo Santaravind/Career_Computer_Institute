@@ -14,6 +14,7 @@ import AdminLogin from './components/loginSection/AdminLogin';
 import LoginPage from './components/loginSection/LoginPage';
 import InstituteLogin from './components/loginSection/InstituteLogin';
 import SubmissionSuccess from './components/admissionpages/SubmissionSuccess';
+import Notifications from './components/pages/Notifications';
 function App() {
   
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/gallery' element={<Gallery/>}></Route>
         <Route path='/admissions' element={<Admission/>}></Route>
         <Route path='/Sccess' element={<SubmissionSuccess/>}></Route>
+        <Route path='/notification' element={<Notifications/>}></Route>
            
 
         <Route path='/admin' element={<AdminLogin/>}></Route>

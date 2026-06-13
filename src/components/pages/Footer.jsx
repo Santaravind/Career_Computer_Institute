@@ -156,7 +156,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className="h-1 bg-gradient-to-r from-blue-700 via-blue-400 to-transparent" />
+      <div className="h-1 bg-linear-to-r from-blue-700 via-blue-400 to-transparent" />
       <footer className="bg-[#0C2340] px-6 py-12 md:px-12 lg:px-24 font-sans print:hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 pb-10 border-b border-white/10">
 
