@@ -17,7 +17,7 @@ const Declaration = ({ formData, errors, onChange, onSubmit, isSubmitting, setIs
       setIsSubmitting(true);
       
       // Generate admission ID
-      const admissionId = `ADM${formData.aadharNumber.slice(-8)}${Date.now().toString().slice(-4)}`;
+      const admissionId = `CCI${formData.aadharNumber.slice(-8)}${Date.now().toString().slice(-4)}`;
       setGeneratedAdmissionId(admissionId);
       
       // Comprehensive data storage

@@ -264,6 +264,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../../assets/logo.jpeg';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -281,6 +282,11 @@ function Navigation() {
     { name: 'CONTACT US', href: '/contact' }
   ];
 
+   const navigation = useNavigate();
+    const loginHanldClink = (e) => {
+      e.preventDefault();
+      navigation("/login");
+    };
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -321,7 +327,7 @@ function Navigation() {
   return (
     <>
       <nav className={`
-        left-0 right-0 z-50 transition-all duration-300 border-b border-gray-100
+        left-0 right-0 z-50 transition-all duration-300 border-b border-gray-100 print:hidden
         ${scrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-md top-0' 
           : 'bg-white top-0 lg:top-9'
@@ -332,7 +338,7 @@ function Navigation() {
             
             
            {/* Logo Section */}
-<div className="flex items-center gap-3 select-none cursor-pointer ml-5 font-roboto"> 
+<div className="print:hidden flex items-center gap-3 select-none cursor-pointer ml-5 font-roboto"> 
   {/* Graphic Emblem */}
   <div className="shrink-0 flex items-center">
     <img 
@@ -394,7 +400,7 @@ function Navigation() {
             {/* Action CTA Button */}
             <div className="hidden lg:block">
               <button 
-                
+                 onClick={loginHanldClink}
                 className="bg-[oklch(35.9%_0.146_265.522)] text-white text-xs xl:text-sm font-bold uppercase tracking-wider py-3 px-6 rounded-lg shadow-sm hover:opacity-90 transition-opacity"
               >
                 login
@@ -444,10 +450,10 @@ function Navigation() {
             ))}
             <div className="pt-4 px-4">
               <button
-                onClick={() => setIsMobileMenuOpen(false)}
+              onClick={loginHanldClink}
                 className="block text-center bg-[oklch(35.9%_0.146_265.522)] text-white text-sm font-bold uppercase tracking-wider py-3 px-6 rounded-lg"
               >
-                Enquiry Now
+                Login
               </button>
             </div>
           </div>
