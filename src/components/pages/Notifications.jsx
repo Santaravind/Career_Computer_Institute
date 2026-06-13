@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzs2qJcu5E85esN5gnUsSYKqvUN4FnUMZM3baCKziAThH3E2vufeJdczPMBmGskNEer/exec";
-
+const SCRIPT_URL = import.meta.env.VITE_SCRIPT_NOTIFICATION_URL;
 // Unified styling rules supporting safe lowercase keys from normalized fetch formats
 const TYPE_STYLES = {
   notice: {
