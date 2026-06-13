@@ -278,7 +278,7 @@ function Navigation() {
     { name: 'ADMISSIONS', href: '/admissions' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'PLACEMENTS', href: '/placements' },
-    { name: 'BLOG', href: '/blog' },
+    { name: 'NOTIFICATION', href: '/notification' },
     { name: 'CONTACT US', href: '/contact' }
   ];
 
