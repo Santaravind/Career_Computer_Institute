@@ -1,6 +1,7 @@
 
 
 // const SCRIPT_URL='https://script.google.com/macros/s/AKfycbyFFCaOkko2eBsd2l1tvLAR0Qie1ZFKqePJejHdquY0dnJUHLl05tQA6IPTuTDgZCSpSw/exec'
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycby_lMNemHLiDNcvQ2sxEQMU0t0LzJnkiejP26YtxdNXZsk7Z2qgBZTlqizRgTvFWJAPdQ/exec'
 
 const fetchWithRetry = async (url, options = {}, retries = 3, delay = 2000) => {
   try {

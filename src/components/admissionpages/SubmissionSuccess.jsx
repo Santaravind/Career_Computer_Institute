@@ -269,21 +269,25 @@ const transformBackendData = (backendData) => {
     firstName: backendData['First Name'] || backendData.firstName || '',
     lastName: backendData['Last Name'] || backendData.lastName || '',
     dateOfBirth: backendData['Date of Birth'] || backendData.dateOfBirth || '',
-    fatherName: backendData["Father's Name "] || backendData.fatherName || '',
-    motherName: backendData["Mother's Name"] || backendData.motherName ||'',
+    fatherName:
+  backendData["Father Name"] ||
+  backendData["Father's Name"] ||
+  backendData.fatherName ||
+  '',
+    motherName: backendData["Mother Name"] || backendData.motherName ||'',
     age: backendData['Age '] || backendData.age || '',
     castCategory: backendData['Cast Category'] || backendData.castCategory || '',
     aadharNumber: backendData['Aadhar Number '] || backendData.aadharNumber || '',
     
     // Contact Details
-    mobileNumber: backendData['Mobile Number '] || backendData.mobileNumber || '',
+    mobileNumber: backendData['Mobile Number'] || backendData.mobileNumber || '',
     email: backendData['Email'] || backendData.email || '',
     address: backendData['Address'] || backendData.address || '',
-    city: backendData['City '] || backendData.city || '',
+    city: backendData['City'] || backendData.city || '',
     villagePost: backendData['Village/Post '] || backendData.villagePost || '',
-    district: backendData['District '] || backendData.district || '',
-    state: backendData['State '] || backendData.state || '',
-    pinCode: backendData['PIN Code'] || backendData.pinCode || '',
+    district: backendData['District'] || backendData.district || '',
+    state: backendData['State'] || backendData.state || '',
+    pinCode: backendData['Pin Code'] || backendData.pinCode || '',
     permanentAddress: backendData[' Permanent Address '] || backendData.permanentAddress || '',
     
     // Course Details
@@ -294,18 +298,18 @@ const transformBackendData = (backendData) => {
     
     // Education Details - Handle different column name formats
     tenth: {
-      collegeName: backendData['10th College '] || backendData.tenthCollegeName || backendData.tenth?.collegeName || '',
-      yearOfPassing: backendData['10th year '] || backendData.tenthYearOfPassing || backendData.tenth?.yearOfPassing || '',
+      collegeName: backendData['10th College'] || backendData.tenthCollegeName || backendData.tenth?.collegeName || '',
+      yearOfPassing: backendData['10th Year'] || backendData.tenthYearOfPassing || backendData.tenth?.yearOfPassing || '',
       percentage: backendData['10th Percentage'] || backendData.tenthPercentage || backendData.tenth?.percentage || ''
     },
     twelfth: {
-      collegeName: backendData['12th College '] || backendData.twelfthCollegeName || backendData.twelfth?.collegeName || '',
+      collegeName: backendData['12th College'] || backendData.twelfthCollegeName || backendData.twelfth?.collegeName || '',
       yearOfPassing: backendData['12th Year'] || backendData.twelfthYearOfPassing || backendData.twelfth?.yearOfPassing || '',
       percentage: backendData['12th Percentage'] || backendData.twelfthPercentage || backendData.twelfth?.percentage || ''
     },
     diploma: {
       collegeName: backendData['Diploma Collage'] || backendData.diplomaCollegeName || backendData.diploma?.collegeName || '',
-      yearOfPassing: backendData['Diploma Year '] || backendData.diplomaYearOfPassing || backendData.diploma?.yearOfPassing || '',
+      yearOfPassing: backendData['Diploma Year'] || backendData.diplomaYearOfPassing || backendData.diploma?.yearOfPassing || '',
       percentage: backendData['Diploma Percentage'] || backendData.diplomaPercentage || backendData.diploma?.percentage || ''
     },
     graduation: {
@@ -432,8 +436,8 @@ const transformBackendData = (backendData) => {
               <p className="text-yellow-700 text-sm">
                 • Make sure you're using the correct email address<br/>
                 • Check your spam folder for any confirmation emails<br/>
-                • Contact college administration: <strong>+91-8840157051</strong><br/>
-                • Email: <strong>bharattechnicalcollege@gmail.com</strong><br/>
+                • Contact college administration: <strong>+91-70072 72808</strong><br/>
+                • Email: <strong>computertraininginstitute@gmail.com</strong><br/>
                 • Visit college with your personal details for assistance
               </p>
             </div>
@@ -533,18 +537,18 @@ const transformBackendData = (backendData) => {
           <div className="bg-blue-900 text-white p-3 md:p-6 text-center print:bg-white print:text-black print:border-b-2 print:border-gray-800">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-3 md:space-y-0 mb-3 md:mb-4 print:mb-2">
               <div className="text-center md:text-left order-2 md:order-1">
-                <p className="text-xs md:text-sm print:text-xs">Phone: +91-8840157051</p>
-                <p className="text-xs md:text-sm print:text-xs">Email: bharattechnicalcollege@gmail.com</p>
-                 <p className="text-xs md:text-sm print:text-xs">Website: bharattechnicalcollege.com</p>
+                <p className="text-xs md:text-sm print:text-xs">Phone: +91-70072 72808</p>
+                <p className="text-xs md:text-sm print:text-xs">Email: computertraininginstitute@gmail.com</p>
+                 <p className="text-xs md:text-sm print:text-xs">Website: computertraininginstitute.com</p>
              
               </div>
               <div className="text-center flex-1 order-1 md:order-2">
-                <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold print:text-2xl mb-1 md:mb-2">BHARAT TECHNICAL COLLEGE</h1>
-                <p className="text-sm md:text-base lg:text-lg print:text-sm italic">OF FIRE ENGINEERING & SAFETY MANAGEMENT</p>
-                <p className="text-xs md:text-sm print:text-xs mt-1">Robertsganj, Sonbhadra, Uttar Pradesh - 231216</p>
+                <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold print:text-2xl mb-1 md:mb-2">Career Computer </h1>
+                <p className="text-sm md:text-base lg:text-lg print:text-sm italic">Institute</p>
+                <p className="text-xs md:text-sm print:text-xs mt-1">Robertsganj, Sonbhadra, Uttar Pradesh</p>
               </div>
-              <div className="text-center md:text-right order-3">
-                {/* <p className="text-xs md:text-sm print:text-xs">Website: bharattechnicalcollege.com</p> */}
+              {/* <div className="text-center md:text-right order-3">
+                 <p className="text-xs md:text-sm print:text-xs">Website: bharattechnicalcollege.com</p> 
                <p className="text-xs md:text-sm print:text-xs">
                 An Autonomous Body, Under Govt. <br className='notprint' /> Act Established Under Act 1882,<br />
                 Registered Under Govt. of U.P. <br className='notprint' /> & Ministry of MSME, Govt. of India.<br />
@@ -552,7 +556,7 @@ const transformBackendData = (backendData) => {
                     ISO Certified.
                   </p>
 
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -868,7 +872,19 @@ const transformBackendData = (backendData) => {
           }
         }
       `}</style>
+<style jsx>{`
+  @media print {
+    @page {
+      size: A4;
+      margin: 0;
+    }
 
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  }
+`}</style>
       
     </div>
   );

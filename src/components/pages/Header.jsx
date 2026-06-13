@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/f
 
 function Header() {
   return (
-    <div className="bg-[oklch(30.9%_0.146_260.522)] text-white font-roboto text-md py-2 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3">
+    <div className="print:hidden bg-[oklch(30.9%_0.146_260.522)] text-white font-roboto text-md py-2 px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3">
       
       {/* Contact Info Section */}
       <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">

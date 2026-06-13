@@ -269,7 +269,7 @@ const handleSubmit = async (e, submissionData = null) => {
     // Use provided submissionData or create default
     const finalSubmissionData = submissionData || {
       ...formData,
-      admissionId: `ADM${formData.aadharNumber.slice(-8)}${Date.now().toString().slice(-4)}`,
+      admissionId: `CCI${formData.aadharNumber.slice(-8)}${Date.now().toString().slice(-4)}`,
       submissionTimestamp: new Date().toISOString(),
       status: 'ADMISSION_CONFIRMED',
       paymentStatus: 'paid'

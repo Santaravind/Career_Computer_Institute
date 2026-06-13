@@ -13,7 +13,7 @@ const AdmissionSuccess = ({ formData }) => {
       localStorage.removeItem('pendingAdmissionId');
       localStorage.removeItem('admissionFormData');
     }
-    window.location.href = '/admission';
+    window.location.href = '/admissions';
   };
 
   return (

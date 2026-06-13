@@ -60,7 +60,7 @@ function Hero() {
   };
   return (
     <>
-      <section className="relative bg-slate-100 font-roboto overflow-hidden pb-20 lg:pb-16">
+      <section className="print:hidden relative bg-slate-100 font-roboto overflow-hidden pb-20 lg:pb-16">
         {/* Main Banner Wrapper */}
         <div className="relative flex flex-col lg:flex-row min-h-130 lg:min-h-145 bg-[#003B73]">
           {/* Left Text content pane */}
