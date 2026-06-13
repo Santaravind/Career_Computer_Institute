@@ -206,13 +206,13 @@ function PopulerCources() {
             </p>
 
             {/* Link Trigger */}
-            <a
-              href={`#course-${course.id}`}
+            <button  onClick={ handalCourse}
+              
               className="inline-flex items-center gap-1.5 text-[#0B56A4] hover:text-blue-800 text-sm font-extrabold group transition-colors mt-auto"
             >
               Learn More
               <FiArrowRight className="text-base transform group-hover:translate-x-1 transition-transform" />
-            </a>
+            </button>
           </div>
 
         </div>

@@ -21,6 +21,8 @@ const AdmissionForm = () => {
     age: "",
     castCategory: "",
     aadharNumber: "",
+    //appar
+    apparNumber: "",
 
     // Contact Details
     mobileNumber: "",
@@ -222,6 +224,7 @@ useEffect(() => {
       } else if (formData.aadharNumber.length !== 12) {
         newErrors.aadharNumber = 'Aadhar number must be 12 digits';
       }
+      if (!formData.apparNumber) newErrors.apparNumber = 'appar Number is required';
       if (!formData.photoUrl) newErrors.photo = 'Photo is required';
     }
 
