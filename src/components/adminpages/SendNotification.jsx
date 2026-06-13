@@ -2,21 +2,35 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 
 const SendNotification = () => {
-  const [formData, setFormData] = useState({
-    id: '',
-    title: '',
-    description: '', // New Field
-    link: '',
-    type: '',
-    date: ''
-  });
+  
   
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const adminEmail = useSelector((state) => state.admin.email);
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzs2qJcu5E85esN5gnUsSYKqvUN4FnUMZM3baCKziAThH3E2vufeJdczPMBmGskNEer/exec';
+  const SCRIPT_URL = import.meta.env.VITE_SCRIPT_NOTIFICATION_URL;
 
+  const getTodayDateString = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+const generateUniqueID = () => {
+  const year = new Date().getFullYear();
+  // Generates a short, unique 6-digit random number sequence
+  const randomDigits = Math.floor(100000 + Math.random() * 900000); 
+  return `NOT-${year}-${randomDigits}`;
+};
+const [formData, setFormData] = useState({
+    id: generateUniqueID(),
+    title: '',
+    description: '', // New Field
+    link: '',
+    type: '',
+    date: getTodayDateString()
+  });
   // Helper logic to compute word counts
   const getWordCount = (text) => {
     if (!text.trim()) return 0;
@@ -79,12 +93,12 @@ const SendNotification = () => {
       if (result.success) {
         setMessage('Notification dispatched successfully!');
         setFormData({
-          id: '',
+          id: generateUniqueID(),
           title: '',
           description: '',
           link: '',
           type: '',
-          date: ''
+          date: getTodayDateString()
         });
       } else {
         setMessage('Error saving data: ' + result.message);
@@ -131,7 +145,7 @@ const SendNotification = () => {
                 type="text"
                 name="id"
                 value={formData.id}
-                onChange={handleInputChange}
+              readOnly
                 required
                 className="w-full px-4 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none text-sm transition bg-slate-50/40"
                 placeholder="e.g., NOT-2026-004"
@@ -226,7 +240,7 @@ const SendNotification = () => {
                 type="date"
                 name="date"
                 value={formData.date}
-                onChange={handleInputChange}
+                readOnly
                 className="w-full px-4 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none text-sm transition bg-slate-50/40 text-slate-600"
               />
             </div>
