@@ -165,7 +165,7 @@ const PersonalDetails = ({ formData, errors, onChange, uploadingPhoto }) => {
     Passport Size Photo * (Max 500KB)
   </label>
   <div className="flex items-center space-x-4">
-    <div className="flex-shrink-0">
+    <div className="shrink-0">
       {formData.photoUrl ? (
         <img 
           src={formData.photoUrl} 

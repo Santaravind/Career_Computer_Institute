@@ -719,7 +719,7 @@ const transformBackendData = (backendData) => {
             <h3 className="text-lg md:text-xl font-bold border-b-2 border-gray-800 mb-3 md:mb-4 print:text-lg">QUALIFICATION INFORMATION</h3>
             
             <div className="overflow-x-auto">
-              <table className="w-full border-collapse border border-gray-800 text-xs md:text-sm min-w-[500px]">
+              <table className="w-full border-collapse border border-gray-800 text-xs md:text-sm min-w-125">
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="border border-gray-800 p-1 md:p-2 text-left">Examination</th>
