@@ -126,9 +126,8 @@ getAdmissionById: async (admissionId) => {
     const response = await fetchWithRetry(`${SCRIPT_URL}?action=getAdmissionById&admissionId=${admissionId}`, {
       method: 'GET',
     });
-
-    const result = await response.json();
-    //  console.log('📊 Admission data fetched:', result);
+     const result = await response.json();
+  
     
     if (!result.success) {
       throw new Error(result.error || 'Failed to fetch admission data');

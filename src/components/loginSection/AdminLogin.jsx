@@ -510,6 +510,8 @@ import toast from "react-hot-toast";
 
 // Import your page components here
 import SendNotification from "../adminpages/SendNotification";
+import ResultDeclared from "../adminpages/ResultDeclared";
+import ResultsList from "../adminpages/ResultsList";
 // import ResultDeclared from "../adminpages/ResultDeclared";
 // import Certificate from "../adminpages/Certificate";
 // import AdminResult from "../adminpages/AdminResult";
@@ -555,7 +557,9 @@ function AdminLogin() {
   const menuItems = [
     { id: "sendNotification", label: "Send Notification", icon: "🔔" },
     { id: "resultDeclared", label: "Declare Results", icon: "📢" },
-    { id: "AdminResult", label: "Admin Result", icon: "📊" },
+
+    { id: "ResultList", label: "Result List", icon: "📊" },
+        { id: "AdminResult", label: "Admin Result", icon: "📊" },
     { id: "Certificate", label: "Certificate", icon: "📜" },
     { id: "AdmitCard", label: "Admit Card", icon: "🪪" },
     { id: "FeeCollection", label: "Fee Collection", icon: "💳" },
@@ -569,8 +573,12 @@ function AdminLogin() {
       case "sendNotification":
         return <SendNotification />;
       case "resultDeclared":
-        return <div className="p-6 bg-white rounded-xl shadow-sm">Declare Results Component Placeholder</div>; // return <ResultDeclared />;
-      case "AdminResult":
+        // return <div className="p-6 bg-white rounded-xl shadow-sm">Declare Results Component Placeholder</div>; 
+        return <ResultDeclared />;
+     
+      case "ResultList":
+         return <ResultsList/>;
+          case "AdminResult":
         return <div className="p-6 bg-white rounded-xl shadow-sm">Admin Result Component Placeholder</div>; // return <AdminResult />;
       case "Certificate":
         return <div className="p-6 bg-white rounded-xl shadow-sm">Certificate Component Placeholder</div>; // return <Certificate />;
@@ -673,7 +681,7 @@ function AdminLogin() {
           </aside>
 
           {/* Right Content Workspace Container */}
-          <main className="flex-1 p-8 bg-blue-100/50 overflow-y-auto h-[calc(100vh-4rem)]">
+          <main className="flex-1 p-4 bg-blue-100/50 overflow-y-auto h-[calc(100vh-4rem)]">
             <div className="max-w-5xl mx-auto">
               {renderActiveComponent()}
             </div>
