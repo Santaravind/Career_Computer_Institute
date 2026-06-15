@@ -19,7 +19,7 @@ function ResultsList() {
       setLoading(true);
       setError(null);
       const response = await googleserv.getResultsList();
-
+     // console.log(response);
       if (response.success) {
         setResults(response.data || []);
       } else {
@@ -136,7 +136,7 @@ function ResultsList() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-6 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-3 px-2 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
@@ -213,7 +213,7 @@ function ResultsList() {
                     const isVerified = row.declare === "Verified";
                     return (
                       <tr key={row.serialNo} className="hover:bg-gray-50 transition">
-                        <td className="px-4 py-3 text-gray-600 font-mono text-xs">{row.serialNo}</td>
+                        <td className="px-4 py-3  text-gray-600 font-mono text-xs">{row.serialNo}</td>
                         <td className="px-4 py-3 font-medium text-gray-900">{row.studentName}</td>
                         <td className="px-4 py-3 text-gray-600">{row.enrollmentNo}</td>
                         <td className="px-4 py-3 text-gray-600">{row.courseName}</td>

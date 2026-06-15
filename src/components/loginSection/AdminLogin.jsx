@@ -681,7 +681,7 @@ function AdminLogin() {
           </aside>
 
           {/* Right Content Workspace Container */}
-          <main className="flex-1 p-8 bg-blue-100/50 overflow-y-auto h-[calc(100vh-4rem)]">
+          <main className="flex-1 p-4 bg-blue-100/50 overflow-y-auto h-[calc(100vh-4rem)]">
             <div className="max-w-5xl mx-auto">
               {renderActiveComponent()}
             </div>
