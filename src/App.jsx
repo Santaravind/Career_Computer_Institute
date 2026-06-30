@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import Navigation from './components/pages/Navigation'
 
@@ -15,9 +15,21 @@ import LoginPage from './components/loginSection/LoginPage';
 import InstituteLogin from './components/loginSection/InstituteLogin';
 import SubmissionSuccess from './components/admissionpages/SubmissionSuccess';
 import Notifications from './components/pages/Notifications';
+import { useDispatch } from 'react-redux';
+import { setAdminEmail } from './components/reduxstore/adminSlice';
 function App() {
   
-
+ const dispatch = useDispatch();
+  
+  //  Restore login state from localStorage on app startup
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('adminEmail');
+    const isAuth = localStorage.getItem('isAdminAuth') === 'true';
+    
+    if (savedEmail && isAuth) {
+      dispatch(setAdminEmail(savedEmail)); 
+    }
+  }, [dispatch]);
   return (
     <>
     <Header />
