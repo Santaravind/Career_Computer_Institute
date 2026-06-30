@@ -505,13 +505,14 @@
 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAdminEmail, setAdminPassword, clearAdmin } from "../reduxstore/adminSlice";
+import { setAdminEmail, clearAdmin } from "../reduxstore/adminSlice";
 import toast from "react-hot-toast";
 
 // Import your page components here
 import SendNotification from "../adminpages/SendNotification";
 import ResultDeclared from "../adminpages/ResultDeclared";
 import ResultsList from "../adminpages/ResultsList";
+import InstituteCreadencial from "../adminpages/InstituteCreadencial";
 // import ResultDeclared from "../adminpages/ResultDeclared";
 // import Certificate from "../adminpages/Certificate";
 // import AdminResult from "../adminpages/AdminResult";
@@ -534,8 +535,8 @@ function AdminLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-      dispatch(setAdminEmail(email));
-      dispatch(setAdminPassword(password));
+      // dispatch(setAdminEmail(email));
+      dispatch(setAdminEmail(email)); // This now saves to localStorage
       toast.success("Admin authentication successful!");
     } else {
       toast.error("Access Denied: Invalid email or password.");
@@ -562,7 +563,7 @@ function AdminLogin() {
         { id: "AdminResult", label: "Admin Result", icon: "📊" },
     { id: "Certificate", label: "Certificate", icon: "📜" },
     { id: "AdmitCard", label: "Admit Card", icon: "🪪" },
-    { id: "FeeCollection", label: "Fee Collection", icon: "💳" },
+    { id: "Institute", label: "Institue creadencial", icon: "💳" },
     { id: "TeacherVerification", label: "Teacher Verification", icon: "👨‍🏫" },
     { id: "IdCard", label: "ID Card", icon: "🆔" },
     { id: "AffiliationVerification", label: "Affiliation Verification", icon: "🤝" },
@@ -584,8 +585,9 @@ function AdminLogin() {
         return <div className="p-6 bg-white rounded-xl shadow-sm">Certificate Component Placeholder</div>; // return <Certificate />;
       case "AdmitCard":
         return <div className="p-6 bg-white rounded-xl shadow-sm">Admit Card Component Placeholder</div>; // return <AdmitCard />;
-      case "FeeCollection":
-        return <div className="p-6 bg-white rounded-xl shadow-sm">Fee Collection Component Placeholder</div>; // return <FeeCollection />;
+      case "Institute":
+        // return <div className="p-6 bg-white rounded-xl shadow-sm">Fee Collection Component Placeholder</div>; 
+        return <InstituteCreadencial />;
       case "TeacherVerification":
         return <div className="p-6 bg-white rounded-xl shadow-sm">Teacher Verification Component Placeholder</div>; // return <TeacherVerification />;
       case "IdCard":

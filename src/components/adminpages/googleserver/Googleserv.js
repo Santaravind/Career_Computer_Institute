@@ -1,7 +1,7 @@
 
 
 
-const BASE_URL ="https://script.google.com/macros/s/AKfycbyLeAgLJGeBDaA0vSHsgebaoEmMez3CdIxIoLr5Kcs5L960KAzW_GS5aJELKv4CbyeW-A/exec";
+const BASE_URL =import.meta.env.VITE_SCRIPT_RESULT_URL;
 
 
 export const googleserv = {
