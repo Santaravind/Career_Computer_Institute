@@ -529,7 +529,8 @@ function AdminLogin() {
   const dispatch = useDispatch();
   const admin = useSelector((state) => state.admin);
 
-  const ADMIN_EMAIL = "computertraininginstutite@gmail.com";
+  const ADMIN_EMAIL = "computertraininginstitute@gmail.com";
+                       
   const ADMIN_PASSWORD = "Saint";
 
   const handleSubmit = (e) => {

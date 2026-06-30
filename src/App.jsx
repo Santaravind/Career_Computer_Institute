@@ -17,6 +17,7 @@ import SubmissionSuccess from './components/admissionpages/SubmissionSuccess';
 import Notifications from './components/pages/Notifications';
 import { useDispatch } from 'react-redux';
 import { setAdminEmail } from './components/reduxstore/adminSlice';
+import { Toaster } from 'react-hot-toast';
 function App() {
   
  const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
   }, [dispatch]);
   return (
     <>
+     <Toaster />
     <Header />
     <Navigation/>
     
