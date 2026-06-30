@@ -68,7 +68,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[oklch(37.9%_0.146_265.522)]  text-white font-sans px-4 py-12 md:px-8 lg:px-16 flex flex-col items-center">
+    <div className="min-h-screen bg-[#003B73]  text-white font-sans px-4 py-12 md:px-8 lg:px-16 flex flex-col items-center">
       {/* Header Section */}
       <div className="text-center max-w-2xl mb-12 relative z-10">
         <h1 className="text-4xl font-bold mb-4 tracking-tight">Get In Touch</h1>
@@ -375,13 +375,13 @@ export default function ContactPage() {
           rel="noopener noreferrer"
           className="bg-[#22c55e] hover:bg-[#16a34a] flex items-center justify-center space-x-2 py-3 rounded-xl font-medium text-sm transition-colors"
         >
-          <span>💬 WhatsApp</span>
+          <span className="flex ">   <BsWhatsapp className="m-1" /> WhatsApp</span>
         </a>
         <a
           href={`mailto:${CONTACT_INFO.email}`}
           className="bg-[#4f46e5] hover:bg-[#4338ca] flex items-center justify-center space-x-2 py-3 rounded-xl font-medium text-sm transition-colors"
         >
-          <span>✉️ Email</span>
+          <span className="flex"><HiOutlineMail className="m-1"/>  Email</span>
         </a>
         <a
           href={CONTACT_INFO.mapsUrl}
