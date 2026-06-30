@@ -18,6 +18,7 @@ import Notifications from './components/pages/Notifications';
 import { useDispatch } from 'react-redux';
 import { setAdminEmail } from './components/reduxstore/adminSlice';
 import { Toaster } from 'react-hot-toast';
+import ContactPage from './components/pages/ContactPage';
 function App() {
   
  const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
         <Route path='/about' element={<AboutUs/>} ></Route>
         <Route path='/course' element={<Courses/>}></Route>
         <Route path='/gallery' element={<Gallery/>}></Route>
+        <Route path='/contact' element={<ContactPage/>}></Route>
+
+
         <Route path='/admissions' element={<Admission/>}></Route>
         <Route path='/Sccess' element={<SubmissionSuccess/>}></Route>
         <Route path='/notification' element={<Notifications/>}></Route>

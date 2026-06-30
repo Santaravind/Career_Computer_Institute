@@ -25,12 +25,13 @@ function Hero() {
 
   // Array of placeholder stock images for the computer institute setting
   const slideImages = [
+    im5,
     im1,
     im2,
     im7,
     im3,
     im4,
-    im5,
+
     // im6
   ];
 
